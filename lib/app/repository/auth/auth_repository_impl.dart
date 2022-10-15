@@ -22,17 +22,17 @@ class AuthRepositoryImpl implements AuthRepository {
         'password': password,
       });
 
-      final accessToken = result.data['accessToken'];
+      final accessToken = result.data['access_Token'];
       if (accessToken == null) {
-        throw UnautorizedException();
+        throw UnauthorizedException();
       }
       return accessToken;
     } on DioError catch (e, s) {
       log('Erro ao realizar login', error: e, stackTrace: s);
       if (e.response?.statusCode == 401) {
-        throw UnautorizedException();
+        throw UnauthorizedException();
       }
-      throw RepositoryExceptions(message: 'Erro ao realizar login');
+      throw RepositoryException(message: 'Erro ao realizar login');
     }
   }
 
@@ -50,7 +50,7 @@ class AuthRepositoryImpl implements AuthRepository {
           );
     } on DioError catch (e, s) {
       log('Erro ao registrar usuário', error: e, stackTrace: s);
-      throw RepositoryExceptions(message: 'Erro ao registrar usuário');
+      throw RepositoryException(message: 'Erro ao registrar usuário');
     }
   }
 }

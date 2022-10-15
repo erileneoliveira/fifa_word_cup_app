@@ -14,13 +14,12 @@ class LoginPresenterImpl implements LoginPresenter {
     required this.loginService,
   });
   @override
-  // ignore: non_constant_identifier_names
   Future<void> Login(String email, String password) async {
     {
       try {
         await loginService.execute(email: email, password: password);
         _view.success();
-      } on UnautorizedException {
+      } on UnauthorizedException {
         _view.error('Usuário ou senha inválidos');
       } catch (e, s) {
         log('Erro ao realizar login', error: e, stackTrace: s);
@@ -30,5 +29,5 @@ class LoginPresenterImpl implements LoginPresenter {
   }
 
   @override
-  set view(LoginView view) {}
+  set view(LoginView view) => _view = view;
 }

@@ -25,7 +25,7 @@ class FifaWordCupApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeConfig.theme,
         routes: {
-          '/': (_) => const SplashRout(),
+          '/': (_) => const SplashRoute(),
           '/auth/login': (_) => const LoginRoute(),
           '/auth/register': (_) => const RegisterRoute(),
           '/home': (_) => const HomePage(),

@@ -5,12 +5,13 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_getit/flutter_getit.dart';
 
-class SplashRout extends FlutterGetItPageRoute {
-  const SplashRout({super.key});
+class SplashRoute extends FlutterGetItPageRoute {
+  const SplashRoute({super.key});
 
   @override
-  List<Bind<Object>> get bindings =>
-      [Bind.lazySingleton<SplashPresenter>((i) => SplashPresenterImpl())];
+  List<Bind<Object>> get bindings => [
+        Bind.lazySingleton<SplashPresenter>((i) => SplashPresenterImpl()),
+      ];
 
   @override
   WidgetBuilder get page => (context) => SplashPage(presenter: context.get());
